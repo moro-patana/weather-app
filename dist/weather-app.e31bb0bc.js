@@ -33871,7 +33871,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 const Context = _react.default.createContext();
 
 exports.Context = Context;
-const API_URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=madagascar";
+const API_URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=london";
 
 function ContextProvider({
   children
