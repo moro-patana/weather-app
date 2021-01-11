@@ -1,3 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom"
-ReactDOM.render(<h1>Onja Weather App</h1>,document.getElementById("root"))
+import {BrowserRouter as Router} from "react-router-dom"
+import { ContextProvider } from "./pages/Context"
+import App from "./pages/App"
+
+ReactDOM.render(
+    <ContextProvider>
+        <Router>
+            <App/>
+        </Router>
+    </ContextProvider>,document.getElementById("root"))
