@@ -15,6 +15,10 @@
   "bugs": {
     "url": "https://github.com/moro-patana/weather-app/issues"
   },
+  "browserslist": [
+    "last 1 chrome version"
+  ],
+
   "homepage": "https://github.com/moro-patana/weather-app#readme",
   "dependencies": {
     "react": "^17.0.1",
