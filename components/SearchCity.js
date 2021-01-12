@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { Context } from "../pages/Context"
 
 export default function SearchCity() {
-    const {query, setQuery, SearchCity} = useContext(Context)
+    const {query, setQuery, searchCity} = useContext(Context)
     return (
         <div>
-        <form className="form" onSubmit={SearchCity}>
+        <form className="form" onSubmit={searchCity}>
             <input 
                 value = {query} 
                 type="text"  
