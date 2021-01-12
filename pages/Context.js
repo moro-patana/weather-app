@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 const Context = React.createContext()
 
 export default function ContextProvider({children}) {
-    const [query, setQuery] = useState("san Diego")
+    const [query, setQuery] = useState("london")
     const [weather, setWeather] = useState([])
     const [woeid, setWoeid] = useState({})
     async function fetchWeather() {
@@ -18,7 +18,6 @@ export default function ContextProvider({children}) {
         const WEATHER_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${data[0].woeid}/`
         if (data.length) {
             const res = await fetch(WEATHER_URL)
-            console.log(res);
             const weatherData = await res.json()
             console.log(weatherData);
             setWoeid(weatherData)
@@ -29,10 +28,11 @@ export default function ContextProvider({children}) {
     }, [])
     function searchCity(e) {
     e.preventDefault()
+    console.log(e.target)
     fetchWeather()
     }
     return (
-        <Context.Provider value={{weather, query, setQuery, searchCity, woeid}}>
+        <Context.Provider value={{weather, setWeather, query, setQuery, searchCity, woeid}}>
             {children}
         </Context.Provider>
     )

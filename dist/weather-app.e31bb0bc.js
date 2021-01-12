@@ -33875,7 +33875,7 @@ exports.Context = Context;
 function ContextProvider({
   children
 }) {
-  const [query, setQuery] = (0, _react.useState)("san Diego");
+  const [query, setQuery] = (0, _react.useState)("london");
   const [weather, setWeather] = (0, _react.useState)([]);
   const [woeid, setWoeid] = (0, _react.useState)({});
 
@@ -33892,7 +33892,6 @@ function ContextProvider({
 
     if (data.length) {
       const res = await fetch(WEATHER_URL);
-      console.log(res);
       const weatherData = await res.json();
       console.log(weatherData);
       setWoeid(weatherData);
@@ -33905,12 +33904,14 @@ function ContextProvider({
 
   function searchCity(e) {
     e.preventDefault();
+    console.log(e.target);
     fetchWeather();
   }
 
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       weather,
+      setWeather,
       query,
       setQuery,
       searchCity,
@@ -33938,11 +33939,11 @@ function SearchCity() {
   const {
     query,
     setQuery,
-    SearchCity
+    searchCity
   } = (0, _react.useContext)(_Context.Context);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", {
     className: "form",
-    onSubmit: SearchCity
+    onSubmit: searchCity
   }, /*#__PURE__*/_react.default.createElement("input", {
     value: query,
     type: "text",
