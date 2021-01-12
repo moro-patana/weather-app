@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Context } from "../pages/Context"
+import WeatherCard from "../components/WeatherCard"
 
 export default function SearchCity() {
     const {query, setQuery, searchCity} = useContext(Context)
@@ -14,7 +15,7 @@ export default function SearchCity() {
             />
             <button className="button">Search</button>
         </form>
-
+<WeatherCard/>
         </div>
     )
 }
