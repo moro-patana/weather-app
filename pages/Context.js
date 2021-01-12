@@ -5,6 +5,7 @@ export default function ContextProvider({children}) {
     const [query, setQuery] = useState("london")
     const [weather, setWeather] = useState([])
     const [woeid, setWoeid] = useState({})
+
     async function fetchWeather() {
         // const query = "london"
         console.log(query);
