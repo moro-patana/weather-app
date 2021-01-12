@@ -33887,13 +33887,15 @@ function ContextProvider({
     const data = await response.json();
     console.log(data);
     setWeather(data);
+    console.log(data[0].woeid);
     const WEATHER_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${data[0].woeid}/`;
 
-    if (weather.length) {
+    if (data.length) {
       const res = await fetch(WEATHER_URL);
+      console.log(res);
       const weatherData = await res.json();
-      setWoeid(weatherData);
       console.log(weatherData);
+      setWoeid(weatherData);
     }
   }
 
@@ -33911,7 +33913,8 @@ function ContextProvider({
       weather,
       query,
       setQuery,
-      searchCity
+      searchCity,
+      woeid
     }
   }, children);
 }
@@ -34010,7 +34013,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49833" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50137" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

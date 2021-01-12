@@ -14,12 +14,14 @@ export default function ContextProvider({children}) {
         const data = await response.json()
         console.log(data);
         setWeather(data)
+        console.log(data[0].woeid);
         const WEATHER_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${data[0].woeid}/`
-        if (weather.length) {
+        if (data.length) {
             const res = await fetch(WEATHER_URL)
+            console.log(res);
             const weatherData = await res.json()
-            setWoeid(weatherData)
             console.log(weatherData);
+            setWoeid(weatherData)
         }
     }
     useEffect(() => {
@@ -30,7 +32,7 @@ export default function ContextProvider({children}) {
     fetchWeather()
     }
     return (
-        <Context.Provider value={{weather, query, setQuery, searchCity}}>
+        <Context.Provider value={{weather, query, setQuery, searchCity, woeid}}>
             {children}
         </Context.Provider>
     )
