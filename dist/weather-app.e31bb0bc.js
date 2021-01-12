@@ -33919,7 +33919,38 @@ function ContextProvider({
     }
   }, children);
 }
-},{"react":"node_modules/react/index.js"}],"components/SearchCity.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"components/WeatherCard.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = WeatherCard;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Context = require("../pages/Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function WeatherCard() {
+  const {
+    weather,
+    woeid
+  } = (0, _react.useContext)(_Context.Context);
+  console.log(woeid.consolidated_weather);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "weather-list"
+  }, woeid.consolidated_weather?.map(weather => /*#__PURE__*/_react.default.createElement("div", {
+    className: "weather-list-item",
+    key: weather.id
+  }, /*#__PURE__*/_react.default.createElement("h4", null, new Date(weather.applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("img", {
+    src: ""
+  }), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, weather.max_temp), /*#__PURE__*/_react.default.createElement("li", null, weather.min_temp)))));
+}
+},{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js"}],"components/SearchCity.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33930,6 +33961,10 @@ exports.default = SearchCity;
 var _react = _interopRequireWildcard(require("react"));
 
 var _Context = require("../pages/Context");
+
+var _WeatherCard = _interopRequireDefault(require("../components/WeatherCard"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -33951,9 +33986,9 @@ function SearchCity() {
     onChange: e => setQuery(e.target.value)
   }), /*#__PURE__*/_react.default.createElement("button", {
     className: "button"
-  }, "Search")));
+  }, "Search")), /*#__PURE__*/_react.default.createElement(_WeatherCard.default, null));
 }
-},{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js"}],"pages/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js","../components/WeatherCard":"components/WeatherCard.js"}],"pages/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -7,8 +7,8 @@ export default function WeatherCard() {
     return (
         <div className="weather-list">
             {woeid.consolidated_weather?.map(weather => (
-            <div className="wetaher-list-item">
-                <h4>{weather.created}</h4>
+            <div className="weather-list-item" key={weather.id}>
+                <h4>{new Date(weather.applicable_date).toDateString()}</h4>
                 <img src=""/>
                 <ul>
                 <li>{weather.max_temp}</li>
@@ -16,6 +16,7 @@ export default function WeatherCard() {
                 </ul>
             </div>
             ))}
+            
         </div>
     )
 }

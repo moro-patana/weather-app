@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"weather-app.9ad09f98.css","sourceRoot":"..","sourcesContent":[".weather-list {\r\n    display: grid;\r\n    grid-template-columns: repeat(6, 1fr);\r\n    column-gap: 10px;\r\n}\r\n.weather-list-item {\r\n    background-color: black;\r\n    color: white;\r\n}"]}
