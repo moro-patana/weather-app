@@ -1,0 +1,9 @@
+.weather-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 10px;
+}
+.weather-list-item {
+    background-color: black;
+    color: white;
+}
