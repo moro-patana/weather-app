@@ -33948,7 +33948,7 @@ function WeatherCard() {
     key: weather.id
   }, /*#__PURE__*/_react.default.createElement("h4", null, new Date(weather.applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com//static/img/weather/${weather.weather_state_abbr}.svg`
-  }), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, weather.max_temp), /*#__PURE__*/_react.default.createElement("li", null, weather.min_temp)))));
+  }), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, Math.floor(Math.round(weather.max_temp))), /*#__PURE__*/_react.default.createElement("li", null, Math.floor(Math.round(weather.min_temp)))))));
 }
 },{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js"}],"components/SearchCity.js":[function(require,module,exports) {
 "use strict";
