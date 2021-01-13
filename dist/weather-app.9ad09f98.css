@@ -10,6 +10,12 @@
     border-radius: 5px;
     padding: 1rem;
 }
+img {
+    width: 100%;
+}
+.weather-list-item:nth-of-type(1) {
+    display: none;
+}
 .weather-today {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
