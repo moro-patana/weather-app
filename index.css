@@ -2,13 +2,24 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     column-gap: 10px;
+    padding: 1rem;
 }
 .weather-list-item {
-    background-color: black;
+    background-color: #121629;
     color: white;
+    border-radius: 5px;
+    padding: 1rem;
 }
 .weather-today {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
+}
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+li {
+    list-style: none;
 }
