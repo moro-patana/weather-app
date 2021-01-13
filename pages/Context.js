@@ -29,8 +29,8 @@ export default function ContextProvider({children}) {
     }, [])
     function searchCity(e) {
     e.preventDefault()
-    console.log(e.target)
     fetchWeather()
+    setQuery("")
     }
     return (
         <Context.Provider value={{weather, setWeather, query, setQuery, searchCity, woeid}}>
