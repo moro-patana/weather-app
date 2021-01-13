@@ -7,5 +7,10 @@
     background-color: black;
     color: white;
 }
+.weather-today {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+}
 
 /*# sourceMappingURL=/weather-app.9ad09f98.css.map */

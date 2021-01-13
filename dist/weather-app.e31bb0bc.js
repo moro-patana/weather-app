@@ -33974,7 +33974,8 @@ function SearchCity() {
   const {
     query,
     setQuery,
-    searchCity
+    searchCity,
+    woeid
   } = (0, _react.useContext)(_Context.Context);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", {
     className: "form",
@@ -33986,7 +33987,11 @@ function SearchCity() {
     onChange: e => setQuery(e.target.value)
   }), /*#__PURE__*/_react.default.createElement("button", {
     className: "button"
-  }, "Search")), /*#__PURE__*/_react.default.createElement(_WeatherCard.default, null));
+  }, "Search")), /*#__PURE__*/_react.default.createElement(_WeatherCard.default, null), /*#__PURE__*/_react.default.createElement("div", {
+    className: "weather"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Today's Hightlights"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "weather-today"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Wind status"), /*#__PURE__*/_react.default.createElement("p", null, woeid.consolidated_weather ? woeid.consolidated_weather[0].wind_direction : "")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Humidity"), /*#__PURE__*/_react.default.createElement("p", null, woeid.consolidated_weather ? woeid.consolidated_weather[0].humidity : "")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Visibility"), woeid.consolidated_weather ? woeid.consolidated_weather[0].visibility : ""), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Air Pressure"), woeid.consolidated_weather ? woeid.consolidated_weather[0].air_pressure : ""))));
 }
 },{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js","../components/WeatherCard":"components/WeatherCard.js"}],"pages/App.js":[function(require,module,exports) {
 "use strict";
@@ -34049,7 +34054,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49327" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52281" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
