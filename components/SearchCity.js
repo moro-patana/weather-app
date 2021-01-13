@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { Context } from "../pages/Context"
-import WeatherCard from "../components/WeatherCard"
+// import WeatherToday from "../components/WeatherToday"
+
 
 export default function SearchCity() {
-    const {query, setQuery, searchCity,woeid } = useContext(Context)
+    const {query, setQuery, searchCity} = useContext(Context)
  
     return (
         <div>
@@ -16,29 +17,7 @@ export default function SearchCity() {
             />
             <button className="button">Search</button>
         </form>
-        <WeatherCard/>
-        <div className="weather">
-            <h3>Today's Hightlights</h3>
-            <div className="weather-today">
-                <div>
-                    <h4>Wind status</h4>
-                    <p>{woeid.consolidated_weather ? Math.floor(Math.round(woeid.consolidated_weather[0].wind_direction)) : ""} mph</p>
-                </div>
-                <div>
-                <h4>Humidity</h4>
-                <p>{woeid.consolidated_weather ? woeid.consolidated_weather[0].humidity : ""} %</p>
-                </div>
-                <div>
-                <h4>Visibility</h4>
-                {woeid.consolidated_weather ? Math.floor(Math.round(woeid.consolidated_weather[0].visibility)) : ""} miles
-                </div>
-                <div>
-                <h4>Air Pressure</h4>
-                {woeid.consolidated_weather ? woeid.consolidated_weather[0].air_pressure : ""} mb
-                </div>
-            </div>
-        </div>
-       
+        {/* <WeatherToday/> */}
         </div>
     )
 }
