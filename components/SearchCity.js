@@ -22,19 +22,19 @@ export default function SearchCity() {
             <div className="weather-today">
                 <div>
                     <h4>Wind status</h4>
-                    <p>{woeid.consolidated_weather ? woeid.consolidated_weather[0].wind_direction : ""}</p>
+                    <p>{woeid.consolidated_weather ? Math.floor(Math.round(woeid.consolidated_weather[0].wind_direction)) : ""} mph</p>
                 </div>
                 <div>
                 <h4>Humidity</h4>
-                <p>{woeid.consolidated_weather ? woeid.consolidated_weather[0].humidity : ""}</p>
+                <p>{woeid.consolidated_weather ? woeid.consolidated_weather[0].humidity : ""} %</p>
                 </div>
                 <div>
                 <h4>Visibility</h4>
-                {woeid.consolidated_weather ? woeid.consolidated_weather[0].visibility : ""}
+                {woeid.consolidated_weather ? Math.floor(Math.round(woeid.consolidated_weather[0].visibility)) : ""} miles
                 </div>
                 <div>
                 <h4>Air Pressure</h4>
-                {woeid.consolidated_weather ? woeid.consolidated_weather[0].air_pressure : ""}
+                {woeid.consolidated_weather ? woeid.consolidated_weather[0].air_pressure : ""} mb
                 </div>
             </div>
         </div>

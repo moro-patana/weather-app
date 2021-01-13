@@ -11,8 +11,8 @@ export default function WeatherCard() {
                 <h4>{new Date(weather.applicable_date).toDateString()}</h4>
                 <img src={`https://www.metaweather.com//static/img/weather/${weather.weather_state_abbr}.svg`}/>                
                 <ul>
-                <li>{Math.floor(Math.round(weather.max_temp))}</li>
-                <li>{Math.floor(Math.round(weather.min_temp))}</li>
+                <li>{Math.floor(Math.round(weather.max_temp))}&deg;C</li>
+                <li>{Math.floor(Math.round(weather.min_temp))}&deg;C</li>
                 </ul>
             </div>
             ))}

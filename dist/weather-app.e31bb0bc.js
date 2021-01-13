@@ -33904,8 +33904,8 @@ function ContextProvider({
 
   function searchCity(e) {
     e.preventDefault();
-    console.log(e.target);
     fetchWeather();
+    setQuery("");
   }
 
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
@@ -33948,7 +33948,7 @@ function WeatherCard() {
     key: weather.id
   }, /*#__PURE__*/_react.default.createElement("h4", null, new Date(weather.applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com//static/img/weather/${weather.weather_state_abbr}.svg`
-  }), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, Math.floor(Math.round(weather.max_temp))), /*#__PURE__*/_react.default.createElement("li", null, Math.floor(Math.round(weather.min_temp)))))));
+  }), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, Math.floor(Math.round(weather.max_temp)), "\xB0C"), /*#__PURE__*/_react.default.createElement("li", null, Math.floor(Math.round(weather.min_temp)), "\xB0C")))));
 }
 },{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js"}],"components/SearchCity.js":[function(require,module,exports) {
 "use strict";
@@ -33991,7 +33991,7 @@ function SearchCity() {
     className: "weather"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Today's Hightlights"), /*#__PURE__*/_react.default.createElement("div", {
     className: "weather-today"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Wind status"), /*#__PURE__*/_react.default.createElement("p", null, woeid.consolidated_weather ? woeid.consolidated_weather[0].wind_direction : "")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Humidity"), /*#__PURE__*/_react.default.createElement("p", null, woeid.consolidated_weather ? woeid.consolidated_weather[0].humidity : "")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Visibility"), woeid.consolidated_weather ? woeid.consolidated_weather[0].visibility : ""), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Air Pressure"), woeid.consolidated_weather ? woeid.consolidated_weather[0].air_pressure : ""))));
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Wind status"), /*#__PURE__*/_react.default.createElement("p", null, woeid.consolidated_weather ? Math.floor(Math.round(woeid.consolidated_weather[0].wind_direction)) : "", " mph")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Humidity"), /*#__PURE__*/_react.default.createElement("p", null, woeid.consolidated_weather ? woeid.consolidated_weather[0].humidity : "", " %")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Visibility"), woeid.consolidated_weather ? Math.floor(Math.round(woeid.consolidated_weather[0].visibility)) : "", " miles"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Air Pressure"), woeid.consolidated_weather ? woeid.consolidated_weather[0].air_pressure : "", " mb"))));
 }
 },{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js","../components/WeatherCard":"components/WeatherCard.js"}],"pages/App.js":[function(require,module,exports) {
 "use strict";
