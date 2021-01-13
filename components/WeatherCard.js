@@ -9,7 +9,7 @@ export default function WeatherCard() {
             {woeid.consolidated_weather?.map(weather => (
             <div className="weather-list-item" key={weather.id}>
                 <h4>{new Date(weather.applicable_date).toDateString()}</h4>
-                <img src=""/>
+                <img src={`https://www.metaweather.com//static/img/weather/${weather.weather_state_abbr}.svg`}/>                
                 <ul>
                 <li>{weather.max_temp}</li>
                 <li>{weather.min_temp}</li>

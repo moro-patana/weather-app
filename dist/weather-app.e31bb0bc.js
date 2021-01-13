@@ -33947,7 +33947,7 @@ function WeatherCard() {
     className: "weather-list-item",
     key: weather.id
   }, /*#__PURE__*/_react.default.createElement("h4", null, new Date(weather.applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("img", {
-    src: ""
+    src: `https://www.metaweather.com//static/img/weather/${weather.weather_state_abbr}.svg`
   }), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, weather.max_temp), /*#__PURE__*/_react.default.createElement("li", null, weather.min_temp)))));
 }
 },{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js"}],"components/SearchCity.js":[function(require,module,exports) {
@@ -34049,7 +34049,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50137" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49327" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
