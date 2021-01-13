@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 const Context = React.createContext()
 
 export default function ContextProvider({children}) {
+    const {loading, setLoading} =  useState(true)
+    const {isOpen, setIsOpen} = useState(false)
     const [query, setQuery] = useState("london")
     const [weather, setWeather] = useState([])
     const [woeid, setWoeid] = useState({})
@@ -33,7 +35,7 @@ export default function ContextProvider({children}) {
     setQuery("")
     }
     return (
-        <Context.Provider value={{weather, setWeather, query, setQuery, searchCity, woeid}}>
+        <Context.Provider value={{weather, setWeather, query, setQuery, searchCity, woeid, loading}}>
             {children}
         </Context.Provider>
     )
