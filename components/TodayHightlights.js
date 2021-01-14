@@ -21,7 +21,13 @@ export default function TodayHightlights() {
             <div>
             <h4>Humidity</h4>
             <p>{findWoeid?.humidity} %</p>
+            <div>
+                <span>0</span>
+                <span>50</span>
+                <span>100</span>
+            </div>
             <progress id="file" max="100" value={findWoeid?.humidity}></progress>
+            <span>%</span>
             </div>
             <div>
             <h4>Visibility</h4>
