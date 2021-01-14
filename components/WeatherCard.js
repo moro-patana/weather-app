@@ -4,10 +4,11 @@ import { Link } from "react-router-dom"
 
 export default function WeatherCard() {
     const {woeid, loading} = useContext(Context)
+    console.log(loading);
     console.log(woeid.consolidated_weather);
     return (
+
         <div className="weather-list">
-            {loading && <p>Loading...</p>}
             {woeid.consolidated_weather?.map(weather => (
             <Link to={`/details/${weather.id}`} key={weather.id}>
                 <div className="weather-list-item" key={weather.id}>

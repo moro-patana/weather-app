@@ -33875,20 +33875,15 @@ exports.Context = Context;
 function ContextProvider({
   children
 }) {
-  const {
-    loading,
-    setLoading
-  } = (0, _react.useState)(true);
-  const {
-    isOpen,
-    setIsOpen
-  } = (0, _react.useState)(false);
+  const [loading, setLoading] = (0, _react.useState)(true);
+  const [isOpen, setIsOpen] = (0, _react.useState)(false);
   const [query, setQuery] = (0, _react.useState)("london");
   const [weather, setWeather] = (0, _react.useState)([]);
   const [woeid, setWoeid] = (0, _react.useState)({});
 
   async function fetchWeather() {
     // const query = "london"
+    setLoading(false);
     console.log(query);
     const API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${query}`;
     const response = await fetch(API_URL);
@@ -33899,6 +33894,7 @@ function ContextProvider({
     const WEATHER_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${data[0].woeid}/`;
 
     if (data.length) {
+      setLoading(false);
       const res = await fetch(WEATHER_URL);
       const weatherData = await res.json();
       console.log(weatherData);
@@ -33986,10 +33982,11 @@ function WeatherCard() {
     woeid,
     loading
   } = (0, _react.useContext)(_Context.Context);
+  console.log(loading);
   console.log(woeid.consolidated_weather);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "weather-list"
-  }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), woeid.consolidated_weather?.map(weather => /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, woeid.consolidated_weather?.map(weather => /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: `/details/${weather.id}`,
     key: weather.id
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -34031,11 +34028,11 @@ function TodayHightlights() {
     className: "weather"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Today's Hightlights"), /*#__PURE__*/_react.default.createElement("div", {
     className: "weather-today"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Wind status"), /*#__PURE__*/_react.default.createElement("p", null, Math.floor(Math.round(findWoeid?.wind_speed)), " mph"), /*#__PURE__*/_react.default.createElement("p", null, findWoeid?.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Humidity"), /*#__PURE__*/_react.default.createElement("p", null, findWoeid?.humidity, " %"), /*#__PURE__*/_react.default.createElement("progress", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Wind status"), /*#__PURE__*/_react.default.createElement("p", null, Math.floor(Math.round(findWoeid?.wind_speed)), " mph"), /*#__PURE__*/_react.default.createElement("p", null, findWoeid?.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Humidity"), /*#__PURE__*/_react.default.createElement("p", null, findWoeid?.humidity, " %"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, "0"), /*#__PURE__*/_react.default.createElement("span", null, "50"), /*#__PURE__*/_react.default.createElement("span", null, "100")), /*#__PURE__*/_react.default.createElement("progress", {
     id: "file",
     max: "100",
     value: findWoeid?.humidity
-  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Visibility"), Math.floor(Math.round(findWoeid?.visibility)), " miles"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Air Pressure"), findWoeid?.air_pressure, " mb")));
+  }), /*#__PURE__*/_react.default.createElement("span", null, "%")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Visibility"), Math.floor(Math.round(findWoeid?.visibility)), " miles"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h4", null, "Air Pressure"), findWoeid?.air_pressure, " mb")));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../pages/Context":"pages/Context.js"}],"pages/App.js":[function(require,module,exports) {
 "use strict";
@@ -34108,7 +34105,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64029" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49758" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
