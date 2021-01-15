@@ -34139,6 +34139,7 @@ function SearchCity() {
   }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
     className: "city-names"
   }, city.map(item => /*#__PURE__*/_react.default.createElement("button", {
+    key: item.id,
     className: "cities",
     onClick: () => handleSelectCity(item.title),
     id: item.woeid
