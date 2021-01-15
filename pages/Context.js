@@ -1,45 +1,66 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 const Context = React.createContext()
+const CORS_URL = "https://cors-anywhere.herokuapp.com/"
 
 export default function ContextProvider({children}) {
-    const [loading, setLoading] =  useState(true)
-    const [isOpen, setIsOpen] = useState(false)
-    const [query, setQuery] = useState("london")
-    const [weather, setWeather] = useState([])
-    const [woeid, setWoeid] = useState({})
-
-    async function fetchWeather() {
-        // const query = "london"
-        setLoading(false)
-        console.log(query);
-        const API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${query}`
-        
-        const response = await fetch(API_URL)
+    const [isLoading, setIsLoading] = useState(true)
+    const [woeid, setWoeid] = useState([])
+    const [query,setQuery] = useState("Helsinki")
+    const [name, setName] = useState("Helsinki")
+    const [weather, setWeather] = useState({})
+    const [city, setCity] = useState([])
+    const [searchCity, setSearchCity] = useState(false)
+    const [fahrenheit, setFahrenheit] = useState(false)
+    async function fetchData() {
+        const WOEID_URL = `https://www.metaweather.com/api/location/search/?query=${query}`
+        const response = await fetch(CORS_URL + WOEID_URL)
         const data = await response.json()
+        setWoeid(data)
         console.log(data);
-        setWeather(data)
-        console.log(data[0].woeid);
-        const WEATHER_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${data[0].woeid}/`
+        const WEATHER_URL = `https://www.metaweather.com/api/location/${data[0].woeid}/`
         if (data.length) {
-            setLoading(false)
-            const res = await fetch(WEATHER_URL)
-            const weatherData = await res.json()
-            console.log(weatherData);
-            setWoeid(weatherData)
+            const response = await fetch(CORS_URL + WEATHER_URL)
+            const data = await response.json()
+            setWeather(data)
+            console.log(data);
         }
+        setIsLoading(false)
     }
+    async function fetchCity() {
+        const WOEID_URL = `https://www.metaweather.com/api/location/search/?query=${name}`
+        const response = await fetch(CORS_URL + WOEID_URL)
+        const data = await response.json()
+        setCity(data)
+        console.log(data);
+    }
+    console.log(woeid.length);
     useEffect(() => {
-        fetchWeather()
+        fetchData()
+        fetchCity()
     }, [])
-    function searchCity(e) {
-    e.preventDefault()
-    fetchWeather()
-    setQuery("")
+    function handleSearchCity() {
+        setSearchCity(!searchCity)
+    }
+     function handleSubmit(e) {
+        e.preventDefault()
+        fetchCity()
+    }
+    function getLocationName(e) {
+        e.preventDefault()
+        setName(e.target.value)
+        fetchCity()
+    }
+    function handleSelectCity(params) {
+        setQuery(params)
+        console.log(params);
+        fetchData()
+        setSearchCity(false)
     }
     return (
-        <Context.Provider value={{weather, setWeather, query, setQuery, searchCity, woeid, loading}}>
+        <Context.Provider value={{query, setQuery, name, setName, woeid, weather, searchCity,handleSelectCity, handleSearchCity
+        ,handleSubmit, city, isLoading,fahrenheit, setFahrenheit,getLocationName}}>
             {children}
         </Context.Provider>
-    )
+     )
 }
 export {ContextProvider, Context}

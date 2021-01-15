@@ -4,10 +4,10 @@ import { Context } from "../pages/Context"
 
 
 export default function TodayHightlights() {
-    const {woeid} = useContext(Context)
+    const {weather} = useContext(Context)
     const {weatherId} = useParams()
-    console.log(woeid.consolidated_weather?.find(weather => weather.id === Number(weatherId)));
-    const findWoeid = woeid.consolidated_weather?.find(weather => weather.id === Number(weatherId));
+    console.log(weather.consolidated_weather?.find(weather => weather.id === Number(weatherId)));
+    const findWoeid = weather.consolidated_weather?.find(weather => weather.id === Number(weatherId));
     console.log(findWoeid);
     return (
         <div className="weather">
