@@ -34121,6 +34121,7 @@ function SearchCity() {
     searchCity,
     getLocationName,
     name,
+    setName,
     handleSelectCity,
     city
   } = (0, _react.useContext)(_Context.Context);
@@ -34139,7 +34140,7 @@ function SearchCity() {
   }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
     className: "city-names"
   }, city.map(item => /*#__PURE__*/_react.default.createElement("button", {
-    key: item.id,
+    key: item.woeid,
     className: "cities",
     onClick: () => handleSelectCity(item.title),
     id: item.woeid

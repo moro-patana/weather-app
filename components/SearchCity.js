@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Context } from "../pages/Context"
 
 export default function SearchCity() {
-    const {searchCity, getLocationName, name, handleSelectCity, city} = useContext(Context)
+    const {searchCity, getLocationName, name, setName, handleSelectCity, city} = useContext(Context)
     return (
         <div>
             {searchCity && 
@@ -17,7 +17,7 @@ export default function SearchCity() {
                        <button className="button">Search</button>
                    </form>
                 <div className="city-names">
-                   {city.map(item => (<button key={item.id} className="cities" onClick={() => handleSelectCity(item.title)} id={item.woeid}>{item.title}</button>))}
+                   {city.map(item => (<button key={item.woeid} className="cities" onClick={() => handleSelectCity(item.title)} id={item.woeid}>{item.title}</button>))}
                 </div>
             </div>
 }
