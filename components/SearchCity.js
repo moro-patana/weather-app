@@ -17,7 +17,7 @@ export default function SearchCity() {
                        <button className="button">Search</button>
                    </form>
                 <div className="city-names">
-                   {city.map(item => (<button className="cities" onClick={() => handleSelectCity(item.title)} id={item.woeid}>{item.title}</button>))}
+                   {city.map(item => (<button key={item.id} className="cities" onClick={() => handleSelectCity(item.title)} id={item.woeid}>{item.title}</button>))}
                 </div>
             </div>
 }
