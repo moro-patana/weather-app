@@ -32,6 +32,9 @@ li {
     padding: 1rem;
     text-align: center;
 }
+.form {
+    display: flex;
+}
 .weather {
     padding-top: 30px;
 }
