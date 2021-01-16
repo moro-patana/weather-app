@@ -4,7 +4,7 @@ import { Context } from "../pages/Context"
 export default function SearchCity() {
     const {searchCity, getLocationName, name, setName, handleSelectCity, city} = useContext(Context)
     return (
-        <div>
+        <div className="search-city">
             {searchCity && 
                 <div className="form-input">
                    <form className="form" onSubmit={getLocationName}>

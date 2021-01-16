@@ -4,11 +4,10 @@ import {Link} from "react-router-dom"
 import {Context} from "../pages/Context"
 export default function WeatherPrediction() {
     const {weather, isLoading, fahrenheit,setFahrenheit} = useContext(Context)
-
     console.log(weather);
     return (
-    <div>
-        <div>
+    <div className="prediction">
+        <div className="temp">
         <button onClick={() => setFahrenheit(false)}>&deg;C</button>
         <button onClick={() => setFahrenheit(true)}>&deg;F</button>
         </div>

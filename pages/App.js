@@ -7,9 +7,11 @@ import SearchCity from "../components/SearchCity"
 
 export default function App() {
     return (
-        <div>
+        <div className="container">
+            <div className="sidebar-container">
             <SearchCity/>
             <TemperatureSideBar/>
+            </div>
             <div className="weather">
             <WeatherPrediction/>
             <Switch>

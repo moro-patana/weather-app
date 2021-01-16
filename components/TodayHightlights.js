@@ -10,7 +10,7 @@ export default function TodayHightlights() {
     const findWoeid = weather.consolidated_weather?.find(weather => weather.id === Number(weatherId));
     console.log(findWoeid);
     return (
-        <div className="weather">
+        <div className="weather-predict">
         <h3>Today's Hightlights</h3>
         <div className="weather-today">
             <div>
@@ -21,13 +21,13 @@ export default function TodayHightlights() {
             <div>
             <h4>Humidity</h4>
             <p>{findWoeid?.humidity} %</p>
-            <div>
+            <div className="length">
                 <span>0</span>
                 <span>50</span>
                 <span>100</span>
             </div>
             <progress id="file" max="100" value={findWoeid?.humidity}></progress>
-            <span>%</span>
+            <span className="percentage">%</span>
             </div>
             <div>
             <h4>Visibility</h4>

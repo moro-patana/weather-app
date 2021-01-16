@@ -10,6 +10,141 @@ body {
 img {
     width: 100%;
 }
+a {
+    color: white;
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
 .icon {
     width: 24px;
+}
+.container {
+    display: grid;
+    grid-template-rows: 20% 1fr;
+    column-gap: 100px;
+}
+.sidebar-container {
+    background-color: #121629;
+}
+.sidebar {
+    padding: 1rem;
+    text-align: center;
+}
+.weather {
+    padding-top: 30px;
+}
+.temperature {
+    font-size: 60px;
+}
+.temp,
+.location {
+    display: flex;
+    justify-content: center;
+}
+progress {
+    width: 100%;
+}
+.length {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+.percentage {
+    display: flex;
+    justify-content: flex-end;
+}
+.temp button {
+    padding: 2rem;
+    border-radius: 50px;
+    background-color: #121629;
+    border: none;
+    color: white;
+    margin-right: 15px;
+    font-size: 25px;
+}
+.temp button:focus {
+    background: white;
+    border: none;
+    color: #121629;
+}
+.form-input {
+    position: absolute;
+    background: #121629;
+    padding: 1rem;
+    width: 100vw;
+    height: 100vh;
+}
+input {
+    padding: 1rem;
+    background-color: transparent;
+    border: 2px solid darkgray;
+}
+
+.button {
+    background-color: blue;
+    padding: 1rem;
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+}
+.city-names {
+    padding-top: 30px;
+}
+.cities {
+    background: transparent;
+    padding: 1rem;
+    border: 2px solid darkgray;
+    color: white;
+}
+.weather-list-item {
+    padding: 1rem;
+    background: #121629;
+    margin-top: 1rem;
+}
+.weather-temp {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+}
+.weather-temp li {
+    padding-right: 1rem;
+}
+.weather-today div {
+    background: #121629;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+.search-button {
+    padding: 1rem;
+    background-color: darkgray;
+    border: none;
+    color: white;
+    margin-bottom: 1rem;
+}
+@media (min-width: 1114px) {
+    .container {
+        display: grid;
+    grid-template-columns: 20% 1fr;
+    }
+    .weather-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    .temp {
+        justify-content: flex-end;
+    }
+     .form-input {
+        width: 20%;
+    }
+    .weather-today {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+        grid-template-rows: repeat(2, 1fr);
+        row-gap: 20px;
+    }
 }

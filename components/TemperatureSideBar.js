@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
 import { Context } from "../pages/Context"
-import {Link} from "react-router-dom"
 import LocationMap from "../img/location-map.svg"
 
 export default function TemperatueSideBar() {
-    const {weather, isLoading,fahrenheit,name, setName, query,searchCity,getLocationName, handleSearchCity, handleSubmit,handleSelectCity, city} = useContext(Context)
+    const {weather, isLoading,fahrenheit,query,handleSearchCity} = useContext(Context)
     
     return (
         <div className="sidebar">
@@ -22,22 +21,6 @@ export default function TemperatueSideBar() {
                 </div>
             </div>
             ))}
-            {/* {searchCity && 
-                   <div className="form-input">
-                   <form className="form" onSubmit={getLocationName}>
-                       <input 
-                           value = {name} 
-                           type="text"  
-                           placeholder="i.e london" 
-                           onChange={(e) => setName(e.target.value)}
-                       />
-                       <button className="button">Search</button>
-                   </form>
-                <div className="city-names">
-                   {city.map(item => (<button className="cities" onClick={() => handleSelectCity(item.title)} id={item.woeid}>{item.title}</button>))}
-                </div>
-                   </div>
-} */}
         </div>
     )
 }
