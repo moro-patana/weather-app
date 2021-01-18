@@ -11,7 +11,14 @@ export default function ContextProvider({children}) {
     const [city, setCity] = useState([])
     const [searchCity, setSearchCity] = useState(false)
     const [fahrenheit, setFahrenheit] = useState(false)
-    async function fetchData() {
+     async function fetchCity() {
+        const WOEID_URL = `https://www.metaweather.com/api/location/search/?query=${name}`
+        const response = await fetch(CORS_URL + WOEID_URL)
+        const data = await response.json()
+        setCity(data)
+        console.log(data);
+    }
+    async function fetchData(query) {
         const WOEID_URL = `https://www.metaweather.com/api/location/search/?query=${query}`
         const response = await fetch(CORS_URL + WOEID_URL)
         const data = await response.json()
@@ -26,16 +33,10 @@ export default function ContextProvider({children}) {
         }
         setIsLoading(false)
     }
-    async function fetchCity() {
-        const WOEID_URL = `https://www.metaweather.com/api/location/search/?query=${name}`
-        const response = await fetch(CORS_URL + WOEID_URL)
-        const data = await response.json()
-        setCity(data)
-        console.log(data);
-    }
+
     console.log(woeid.length);
     useEffect(() => {
-        fetchData()
+        fetchData(query)
         fetchCity()
     }, [])
     function handleSearchCity() {
@@ -52,8 +53,8 @@ export default function ContextProvider({children}) {
     }
     function handleSelectCity(params) {
         setQuery(params)
-        console.log(params);
-        fetchData()
+        console.log(query);
+        fetchData(params)
         setSearchCity(false)
     }
     return (

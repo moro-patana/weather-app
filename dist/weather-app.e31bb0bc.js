@@ -33885,7 +33885,15 @@ function ContextProvider({
   const [searchCity, setSearchCity] = (0, _react.useState)(false);
   const [fahrenheit, setFahrenheit] = (0, _react.useState)(false);
 
-  async function fetchData() {
+  async function fetchCity() {
+    const WOEID_URL = `https://www.metaweather.com/api/location/search/?query=${name}`;
+    const response = await fetch(CORS_URL + WOEID_URL);
+    const data = await response.json();
+    setCity(data);
+    console.log(data);
+  }
+
+  async function fetchData(query) {
     const WOEID_URL = `https://www.metaweather.com/api/location/search/?query=${query}`;
     const response = await fetch(CORS_URL + WOEID_URL);
     const data = await response.json();
@@ -33903,17 +33911,9 @@ function ContextProvider({
     setIsLoading(false);
   }
 
-  async function fetchCity() {
-    const WOEID_URL = `https://www.metaweather.com/api/location/search/?query=${name}`;
-    const response = await fetch(CORS_URL + WOEID_URL);
-    const data = await response.json();
-    setCity(data);
-    console.log(data);
-  }
-
   console.log(woeid.length);
   (0, _react.useEffect)(() => {
-    fetchData();
+    fetchData(query);
     fetchCity();
   }, []);
 
@@ -33934,8 +33934,8 @@ function ContextProvider({
 
   function handleSelectCity(params) {
     setQuery(params);
-    console.log(params);
-    fetchData();
+    console.log(query);
+    fetchData(params);
     setSearchCity(false);
   }
 
@@ -34224,7 +34224,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50053" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49988" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
