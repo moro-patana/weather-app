@@ -33879,7 +33879,7 @@ function ContextProvider({
   const [isLoading, setIsLoading] = (0, _react.useState)(true);
   const [woeid, setWoeid] = (0, _react.useState)([]);
   const [query, setQuery] = (0, _react.useState)("Helsinki");
-  const [name, setName] = (0, _react.useState)("Helsinki");
+  const [name, setName] = (0, _react.useState)("");
   const [weather, setWeather] = (0, _react.useState)({});
   const [city, setCity] = (0, _react.useState)([]);
   const [searchCity, setSearchCity] = (0, _react.useState)(false);
@@ -34224,7 +34224,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49988" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57613" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

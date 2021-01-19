@@ -6,7 +6,7 @@ export default function ContextProvider({children}) {
     const [isLoading, setIsLoading] = useState(true)
     const [woeid, setWoeid] = useState([])
     const [query,setQuery] = useState("Helsinki")
-    const [name, setName] = useState("Helsinki")
+    const [name, setName] = useState("")
     const [weather, setWeather] = useState({})
     const [city, setCity] = useState([])
     const [searchCity, setSearchCity] = useState(false)
