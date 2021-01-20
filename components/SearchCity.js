@@ -5,7 +5,6 @@ export default function SearchCity() {
     const {searchCity, getLocationName, name, setName, handleSelectCity, city} = useContext(Context)
     return (
         <div className="search-city">
-            {searchCity && 
                 <div className="form-input">
                    <form className="form" onSubmit={getLocationName}>
                        <input 
@@ -20,7 +19,6 @@ export default function SearchCity() {
                    {city.map(item => (<button key={item.woeid} className="cities" onClick={() => handleSelectCity(item.title)} id={item.woeid}>{item.title}</button>))}
                 </div>
             </div>
-}
         </div>
     )
 }
