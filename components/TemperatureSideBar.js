@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { Context } from "../pages/Context"
 import LocationMap from "../img/location-map.svg"
+import SearchCity from './SearchCity'
 
 export default function TemperatueSideBar() {
-    const {weather, isLoading,fahrenheit,query,handleSearchCity} = useContext(Context)
+    const {weather, isLoading,fahrenheit,query,handleSearchCity, searchCity} = useContext(Context)
     
     return (
         <div className="sidebar">
@@ -21,6 +22,7 @@ export default function TemperatueSideBar() {
                 </div>
             </div>
             ))}
+            {searchCity && <SearchCity/>}
         </div>
     )
 }

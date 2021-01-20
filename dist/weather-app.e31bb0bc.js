@@ -33961,7 +33961,55 @@ function ContextProvider({
 }
 },{"react":"node_modules/react/index.js"}],"img/location-map.svg":[function(require,module,exports) {
 module.exports = "/location-map.60bafef0.svg";
-},{}],"components/TemperatureSideBar.js":[function(require,module,exports) {
+},{}],"components/SearchCity.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SearchCity;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Context = require("../pages/Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function SearchCity() {
+  const {
+    searchCity,
+    getLocationName,
+    name,
+    setName,
+    handleSelectCity,
+    city
+  } = (0, _react.useContext)(_Context.Context);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-city"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "form-input"
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    className: "form",
+    onSubmit: getLocationName
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    value: name,
+    type: "text",
+    placeholder: "i.e london",
+    onChange: e => setName(e.target.value)
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "button"
+  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "city-names"
+  }, city.map(item => /*#__PURE__*/_react.default.createElement("button", {
+    key: item.woeid,
+    className: "cities",
+    onClick: () => handleSelectCity(item.title),
+    id: item.woeid
+  }, item.title)))));
+}
+},{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js"}],"components/TemperatureSideBar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33975,6 +34023,8 @@ var _Context = require("../pages/Context");
 
 var _locationMap = _interopRequireDefault(require("../img/location-map.svg"));
 
+var _SearchCity = _interopRequireDefault(require("./SearchCity"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -33987,7 +34037,8 @@ function TemperatueSideBar() {
     isLoading,
     fahrenheit,
     query,
-    handleSearchCity
+    handleSearchCity,
+    searchCity
   } = (0, _react.useContext)(_Context.Context);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "sidebar"
@@ -34007,9 +34058,9 @@ function TemperatueSideBar() {
     className: "icon",
     src: _locationMap.default,
     alt: "icon for the location map"
-  }), /*#__PURE__*/_react.default.createElement("p", null, query)))));
+  }), /*#__PURE__*/_react.default.createElement("p", null, query)))), searchCity && /*#__PURE__*/_react.default.createElement(_SearchCity.default, null));
 }
-},{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js","../img/location-map.svg":"img/location-map.svg"}],"components/TodayHightlights.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../pages/Context":"pages/Context.js","../img/location-map.svg":"img/location-map.svg","./SearchCity":"components/SearchCity.js"}],"components/TodayHightlights.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
