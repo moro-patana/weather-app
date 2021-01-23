@@ -4,6 +4,8 @@ import TemperatueSideBar from "../components/TemperatureSideBar"
 import TodayHightlights from '../components/TodayHightlights'
 import WeatherPrediction from '../components/WeatherPrediction'
 import { Context } from "../pages/Context"
+import CursorCompass from "../img/cursor-fill.svg"
+import Footer from "../components/footer"
 
 
 export default function App() {
@@ -13,7 +15,7 @@ export default function App() {
         <div className="weather">
             <TemperatueSideBar/>
             <div className="weather-card">
-                {isLoading && <p>Loading...</p>}
+                {isLoading && <p className="loading">Loading...</p>}
                 <WeatherPrediction setIsParams={setIsParams}/>
                 {isParams 
                 ?
@@ -23,40 +25,43 @@ export default function App() {
                     </Route>
                 </Switch>
                 :
-                <div className="weather-predict">
+                <div className="highlights">
+                    <h3>Today's Hightlights</h3>
                 {weather.consolidated_weather?.slice(0, 1).map(item => (
-            <div className="weather-today" key={item.id}>
-                <h3>Today's Hightlights</h3>
-            <div>
-                <h4>Wind status</h4>
-                <p>{Math.floor(Math.round(item.wind_speed))} mph</p>
-                <p>{item.wind_direction_compass}</p>
+
+                <div className="highlights-details" key={item.id}>
+                <div className="prediction-today wind">
+                    <h4>Wind status</h4>
+                    <p><span className="number">{Math.floor(Math.round(item.wind_speed))}</span> mph</p>
+                    <button><img src={CursorCompass}/></button>
+                    <p>{item.wind_direction_compass}</p>
+                </div>
+                <div className="prediction-today humidity">
+                <h4>Humidity</h4>
+                <p><span className="number">{item.humidity}</span> %</p>
+                <div className="length">
+                    <span>0</span>
+                    <span>50</span>
+                    <span>100</span>
+                </div>
+                <progress id="file" max="100" value={item.humidity}></progress>
+                <span className="percentage">%</span>
+                </div>
+                <div className="prediction-today visibility">
+                <h4>Visibility</h4>
+                <p><span className="number">{Math.floor(Math.round(item.visibility))}</span> miles</p>
+                </div>
+                <div className="prediction-today air-pressure">
+                <h4>Air Pressure</h4>
+                <p><span className="number">{item.air_pressure}</span> mb</p>
+                </div>
             </div>
-            <div>
-            <h4>Humidity</h4>
-            <p>{item.humidity} %</p>
-            <div className="length">
-                <span>0</span>
-                <span>50</span>
-                <span>100</span>
-            </div>
-            <progress id="file" max="100" value={item.humidity}></progress>
-            <span className="percentage">%</span>
-            </div>
-            <div>
-            <h4>Visibility</h4>
-            {Math.floor(Math.round(item.visibility))} miles
-            </div>
-            <div>
-            <h4>Air Pressure</h4>
-            {item.air_pressure} mb
-            </div>
-        </div>
                 ))}
                 </div>
         
 }
             </div>
+            <Footer/>
         </div>
     )
 }
